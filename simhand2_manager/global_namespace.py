@@ -25,3 +25,11 @@ def get_local_ip():
 PC_SERVER_PORT = 8888
 ANDROID_DEVICE_PORT = 8080
 LOCAL_ADDRESS = get_local_ip()
+
+# device
+# default to 'all'
+DEVICE_LIST = 'all'
+
+# or
+# DEVICE_LIST = []
+# ['123456f', '234567e']

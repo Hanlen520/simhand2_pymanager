@@ -5,9 +5,9 @@ from .global_namespace import *
 
 
 def start_device_detect():
-    when_connect(device='all', do=install_simhand)
-    when_connect(device='all', do=add_device)
-    when_disconnect(device='all', do=remove_device)
+    when_connect(device=DEVICE_LIST, do=install_simhand)
+    when_connect(device=DEVICE_LIST, do=add_device)
+    when_disconnect(device=DEVICE_LIST, do=remove_device)
     start_detect(with_log=False)
 
 
