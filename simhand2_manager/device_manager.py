@@ -38,6 +38,8 @@ class SHDevice(object):
     __repr__ = __str__
 
     def to_dict(self):
+        # TODO 提供通向设备的url
+        # TODO simhand的API也应在`/`路由上展示出来
         return {
             'device_id': self.device_id,
             'is_auth': self.is_auth,
