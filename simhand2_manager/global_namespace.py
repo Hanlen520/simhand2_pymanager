@@ -12,6 +12,9 @@ FLAG_HTTP_ERROR = 1001
 TAG_DEVICE_CHANGE = 'DEVICE CHANGE'
 TAG_REQUEST_END = 'REQUEST END'
 
+# simhand2 version
+SIMHAND_VER = r'v0.1.2'
+
 
 def get_local_ip():
     host_name = socket.gethostname()

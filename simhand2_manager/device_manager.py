@@ -46,7 +46,7 @@ class SHDevice(object):
     def startup(self):
         real_command = SIMHAND_INIT_CMD.format(device_id=self.device_id)
         logger.info('DEVICE SIMHAND STARTUP', cmd=real_command)
-        sh_process = subprocess.Popen(real_command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        sh_process = subprocess.Popen(real_command)
         self._sh_process = psutil.Process(sh_process.pid)
         logger.info(TAG_DEVICE_CHANGE, msg=self.device_id + ' init finished')
 

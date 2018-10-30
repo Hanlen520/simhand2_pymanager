@@ -2,3 +2,4 @@ tornado
 psutil
 structlog
 whenconnect
+pyatool
