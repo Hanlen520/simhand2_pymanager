@@ -1,6 +1,5 @@
 from .global_namespace import *
 import subprocess
-import json
 import time
 import threading
 import psutil
@@ -30,6 +29,7 @@ class SHDevice(object):
     def __init__(self, device_id):
         self.device_id = device_id
         self.is_auth = False
+        self.ip_address = None
         self._sh_process = None
 
     def __str__(self):
@@ -37,11 +37,12 @@ class SHDevice(object):
 
     __repr__ = __str__
 
-    def to_json(self):
-        return json.dumps({
+    def to_dict(self):
+        return {
             'device_id': self.device_id,
             'is_auth': self.is_auth,
-        })
+            'ip_address': self.ip_address
+        }
 
     def startup(self):
         real_command = SIMHAND_INIT_CMD.format(device_id=self.device_id)
@@ -83,13 +84,13 @@ def remove_device(device_id):
     return True
 
 
-def auth_device(device_id):
-    # TODO get its ip
+def auth_device(device_id, device_ip):
     if device_id not in _device_dict:
         logger.warn(TAG_DEVICE_CHANGE, msg='not existed', id=device_id)
         return False
     sh_device = _device_dict[device_id]
     sh_device.auth()
+    sh_device.ip_address = device_ip
     return True
 
 
@@ -98,7 +99,7 @@ def get_available_device(auth=None, to_string=None):
     if auth:
         result_dict = {_: v for _, v in _device_dict.items() if v.is_auth}
     if to_string:
-        result_dict = {_: v.to_json() for _, v in _device_dict.items()}
+        result_dict = {_: v.to_dict() for _, v in _device_dict.items()}
     return result_dict
 
 

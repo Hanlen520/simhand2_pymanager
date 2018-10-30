@@ -13,7 +13,7 @@ TAG_DEVICE_CHANGE = 'DEVICE CHANGE'
 TAG_REQUEST_END = 'REQUEST END'
 
 # simhand2 version
-SIMHAND_VER = r'v0.1.2'
+SIMHAND_VER = r'v0.1.3'
 
 
 def get_local_ip():

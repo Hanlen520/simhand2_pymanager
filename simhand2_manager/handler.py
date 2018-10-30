@@ -29,7 +29,8 @@ class DeviceHandler(BaseHandler):
     def post(self):
         # confirm device connection
         target_device_id = self.get_argument('deviceID', '')
-        device_manager.auth_device(target_device_id)
+        target_device_ip = self.get_argument('deviceIP', '')
+        device_manager.auth_device(target_device_id, target_device_ip)
         self.end_with_json(FLAG_HTTP_OK)
 
 
